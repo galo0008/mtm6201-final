@@ -1,0 +1,240 @@
+ /* ============================
+   ROOT COLORS / VARIABLES
+   ============================ */
+ :root {
+     --pet-blue: rgba(96, 213, 231, 1);
+     --pet-pink: rgba(248, 169, 226, 1);
+     --pet-cream: rgba(250, 245, 238, 1);
+     --pet-yellow: rgba(255, 245, 1, 1);
+     --pet-aqua: rgba(172, 225, 231, 1);
+
+     --bs-body-bg: var(--pet-cream);
+
+     --bs-body-color: #0a0a0a;
+     --bs-primary: var(--pet-blue);
+     --bs-secondary: var(--pet-pink);
+     --bs-success: var(--pet-aqua);
+     --bs-warning: var(--pet-yellow);
+ }
+
+ /* ============================
+   ACCESSIBILITY: SKIP LINK
+   ============================ */
+ .skip-link {
+     position: absolute;
+     left: -999px;
+     width: 1px;
+     height: 1px;
+     overflow: hidden;
+ }
+
+ .skip-link:focus {
+     left: 1rem;
+     top: 1rem;
+     padding: .5rem .75rem;
+     background: #000;
+     color: #fff;
+     border-radius: .25rem;
+     z-index: 9999;
+ }
+
+ /* ============================
+   NAVBAR STYLES
+   ============================ */
+ .navbar-custom {
+     background: rgba(255, 255, 255, 0.98);
+     border-radius: 12px;
+     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+     padding: .6rem 1.2rem;
+ }
+
+ .navbar-nav {
+     width: 100%;
+     justify-content: space-evenly;
+ }
+
+ .nav-link {
+     font-size: 1.2rem;
+     font-weight: 600;
+     transition: color 0.25s ease, transform 0.25s ease;
+ }
+
+ .nav-link:hover {
+     color: var(--pet-blue);
+     transform: scale(1.08);
+ }
+
+ /* ============================
+   LOGO
+   ============================ */
+ .brand-logo {
+     width: 90px;
+     height: 90px;
+     object-fit: contain;
+     transform: scale(2.3);
+     transform-origin: center;
+ }
+
+ .brand-logo:hover {
+     transform: scale(1.65);
+ }
+
+
+
+ /* footer */
+
+
+ .footer-custom {
+     background: var(--pet-aqua);
+     padding-top: 6rem;
+     padding-bottom: 4rem;
+     position: relative;
+ }
+
+ /* BIGGER LOGO */
+ .footer-logo {
+     width: 200px;
+     height: auto;
+     transform: translateY(-20px);
+ }
+
+ .cta-shadow-box {
+     position: absolute;
+     top: -25px;
+     left: 25px;
+     width: 100%;
+     height: 120px;
+     background-color: rgba(255, 255, 255, 0.45);
+     border-radius: 14px;
+     z-index: 1;
+ }
+
+ /* MAIN CTA BOX */
+ .cta-main-box {
+     position: relative;
+     z-index: 5;
+     background-color: var(--pet-blue);
+     border-radius: 14px;
+
+     min-height: 120px;
+     padding: 30px 40px;
+
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     gap: 30px;
+
+     box-shadow: 0 6px 22px rgba(0, 0, 0, 0.15);
+     transition: transform .35s ease, box-shadow .35s ease;
+ }
+
+ /* MAGIC HOVER */
+ .cta-main-box:hover {
+     transform: translateY(-5px);
+     box-shadow: 0 10px 26px rgba(0, 0, 0, 0.25);
+ }
+
+ /* TEXT AREA */
+ .cta-text h4 {
+     font-weight: 800;
+     color: var(--pet-dark) !important;
+     margin-bottom: 6px;
+ }
+
+ .cta-subtitle {
+     color: var(--pet-dark) !important;
+     ;
+     opacity: .9;
+     font-weight: 500;
+ }
+
+ /* CREAM BUTTON */
+ .cta-btn {
+     background: var(--pet-cream);
+     color: #000;
+     padding: 12px 26px;
+     border-radius: 10px;
+     font-weight: 700;
+     text-decoration: none;
+     transition: 0.3s;
+ }
+
+ .cta-btn:hover {
+     background: rgb(231, 133, 216);
+     transform: scale(1.05);
+ }
+
+ /* CONTACT INFO */
+ .contact-info i {
+     color: #000;
+     font-size: 1.2rem;
+ }
+
+ .contact-info div {
+     font-size: 1.1rem !important;
+ }
+
+ .text-center.small {
+     font-size: 1rem !important;
+ }
+
+
+ /* MOBILE ADJUSTMENTS */
+ @media (max-width: 768px) {
+
+     .footer-logo {
+         width: 150px;
+         transform: translateY(-10px);
+     }
+
+     .cta-shadow-box {
+         height: 160px;
+     }
+
+     .cta-main-box {
+         flex-direction: column;
+         text-align: center;
+         padding: 24px;
+     }
+ }
+
+ .adoption-form-section {
+     background-color: #faf5ee;
+ }
+
+ .required {
+     color: #d9534f;
+     margin-left: 4px;
+ }
+
+ /* Pink button */
+ .btn-pink {
+     background-color: #fbd0f1;
+
+     color: #000;
+     font-weight: 600;
+     padding: 10px 22px;
+     border-radius: 12px;
+     transition: 0.3s ease;
+ }
+
+ .btn-pink:hover {
+     background-color: #f38cd7;
+     transform: translateY(-3px);
+ }
+
+ .shadow-pink {
+     box-shadow: 0px 4px 12px rgba(250, 163, 225, 0.45);
+ }
+
+ .form-control:focus,
+ .form-select:focus {
+     border-color: #f8a9e2;
+     box-shadow: 0 0 0 0.2rem rgba(248, 169, 226, 0.25);
+ }
+
+
+ .form-control,
+ .form-select {
+     background-color: #fff;
+ }

@@ -623,8 +623,8 @@ body {
 /* Rabbit image */
 .faq-rabbit {
   position: absolute;
-  top: 95px;
-  right: -75px;
+  top: 100px;
+  right: -37px;
   width: 160px;
   z-index: 10;
 }

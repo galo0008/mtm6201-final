@@ -1,0 +1,584 @@
+:root{
+  --pet-blue: rgba(96, 213, 231, 1);
+  --pet-pink: rgba(248, 169, 226, 1);
+  --pet-cream: rgba(250, 245, 238, 1);
+  --pet-yellow: rgba(255, 245, 1, 1);
+  --pet-aqua: rgba(172, 225, 231, 1);
+
+  --bs-body-bg: var(--pet-aqua);
+  --bs-body-color: #0a0a0a;
+  --bs-primary: var(--pet-blue);
+  --bs-secondary: var(--pet-pink);
+  --bs-success: var(--pet-aqua);
+  --bs-warning: var(--pet-yellow);
+}
+
+/* PAGE BACKGROUND */
+body{
+  background: linear-gradient(180deg, var(--pet-blue) 0%, #bfeef3 100%);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* ACCESSIBILITY SKIP LINK */
+.skip-link{
+  position: absolute;
+  left: -999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus{
+  left: 1rem;
+  top: 1rem;
+  padding: .5rem .75rem;
+  background: #000;
+  color: #fff;
+  border-radius: .25rem;
+  z-index: 9999;
+}
+
+/* NAVBAR */
+.navbar-custom{
+  background: rgba(255,255,255,0.98);
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  padding: .6rem 1.2rem;
+}
+
+.navbar-nav{
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.nav-link{
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.brand-logo {
+  width: 90px;       /* keep a normal size so navbar stays normal */
+  height: 90px;
+  object-fit: contain;
+  transform: scale(2.3); /* makes it appear bigger */
+  transform-origin: center;
+}
+.brand-logo:hover {
+  transform: scale(1.65); /* slight grow on hover */
+}
+
+/* HERO SECTION */
+.hero{
+  padding: 4rem 1rem 7rem;
+  text-align: center;
+  color: #041017;
+}
+
+.hero h1{
+  font-weight: 700;
+  font-size: clamp(1.7rem, 4vw, 3rem);
+  margin-bottom: .8rem;
+}
+
+.hero p.lead{
+  max-width: 780px;
+  margin: 0 auto 2.7rem;
+  color: rgba(10,10,10,0.75);
+}
+
+.hero .highlight{
+  color: var(--pet-yellow);
+}
+
+/* HERO VISUAL AREA — FIXED VERSION */
+.hero-visual{
+  position: relative;
+  width: min(520px, 85%);
+  height: 420px;  /* Raised height for proper circle alignment */
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* BIG CIRCLE EXACTLY LIKE YOUR FIGMA */
+.decor-circle{
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: var(--pet-pink);
+
+  /* keeps the bottom flat like in your wireframe */
+  clip-path: polygon(0 0, 100% 0, 100% 72%, 78% 72%, 78% 100%, 22% 100%, 22% 72%, 0 72%);
+
+  z-index: 1;
+}
+
+/* CAT IMAGE — FIXED: NO BORDER, NO SQUARE, PERFECT FIT */
+.cat-img{
+  position: relative;
+  width: 88%;
+  max-width: 430px;
+  transform: translateY(-18px); /* lifts cat away from circle */
+  z-index: 3;
+  border-radius: 0;  /* ensure no rounded box remains */
+  object-fit: contain;
+  background: none !important; /* prevents ghost boxes */
+  box-shadow: none !important; /* removes fake “square” outline */
+}
+
+/* PAW ICONS — SEPARATED FROM THE CIRCLE */
+.paw-icons{
+  position: absolute;
+  top: 4%;
+  right: -40%;
+  width: 60px;
+  height: 60px;
+  z-index: 4;
+}
+
+
+
+
+
+/* RESPONSIVE FIXES */
+@media (max-width:768px){
+  .navbar-custom{ padding: .45rem .7rem }
+  .hero{ padding-top: 2.2rem }
+  .hero-visual{ height: 320px }
+  .decor-circle{ width: 260px; height: 260px }
+  .cat-img{ transform: translateY(-10px); }
+  .paw-icons{ right: 10%; top: 6%; }
+}
+/* second section */
+
+/* ------- PAW ANIMATION ------- */
+.section-how {
+  background: var(--pet-cream);
+  min-height: 750px;
+  padding-top: 5rem;     
+  padding-bottom: 6rem;  
+  padding-left: 2rem;    
+  padding-right: 2rem;  
+}
+
+
+.paw {
+  width: 80px;
+  position: absolute;
+  top: -10px;
+  animation: pawFloat 2s ease-in-out infinite;
+}
+
+.paw-left {
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.paw-right {
+  right: 15%;
+  animation-delay: 0.5s;
+}
+
+@keyframes pawFloat {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  50% { transform: translateY(-10px) rotate(8deg); opacity: 0.85; }
+  100% { transform: translateY(0) rotate(0deg); opacity: 1; }
+}
+
+/* ------- TITLE LETTER-BY-LETTER APPEAR ------- */
+.how-title span {
+  display: inline-block;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #000;
+  position: relative;
+}
+
+.how-title {
+  position: relative;
+}
+
+
+/* dynamically create the letters */
+.how-title span::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #000;
+  font-size: 3rem;
+  font-weight: 800;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  z-index: 2; /* THIS MAKES IT VISIBLE */
+  animation: reveal 1s ease forwards;
+}
+
+
+@keyframes reveal {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+/* Stagger the letters (150ms each) */
+.how-title span {
+  animation: appearLetters 1s forwards;
+}
+
+@keyframes appearLetters {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* ------ SUBTITLE ------ */
+.subtitle {
+  color: var(--pet-blue);
+  font-weight: 600;
+   margin-bottom: 6rem;
+}
+
+/* ------- CARD ANIMATION (MASK + ZOOM) ------- */
+.how-card {
+  background: var(--pet-pink);
+  border-radius: 14px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  overflow: hidden;
+min-height: 350px; 
+  opacity: 0;
+  transform-origin: top right;
+  animation: cardIn 1s ease forwards;
+}
+
+
+
+
+.how-cards .col-md-4:nth-child(1) .how-card { animation-delay: 0.4s; }
+.how-cards .col-md-4:nth-child(2) .how-card { animation-delay: 0.6s; }
+.how-cards .col-md-4:nth-child(3) .how-card { animation-delay: 0.8s; }
+
+@keyframes cardIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+    clip-path: inset(0 0 100% 100%);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* ------- TEXT INSIDE CARDS ------- */
+.how-card h3 {
+  font-weight: 700;
+  color: #000;
+}
+
+.how-card p {
+  color: #0a0a0a;
+  margin-top: 10px;
+}
+ /* third section */
+/* ========== Adopt Section - Exact layout ========== */
+
+/* background uses your :root variables */
+.adopt-section {
+  position: relative;
+  padding-top: 48px;
+  padding-bottom: 60px;
+  background: linear-gradient(180deg, var(--pet-aqua) 0%, var(--pet-blue) 100%);
+  overflow: visible;
+}
+
+/* big yarn icons (more visible & larger) */
+.adopt-icon {
+  position: absolute;
+  opacity: 0.55;
+  width: 320px;
+  z-index: 0;
+  filter: blur(0.4px);
+  transform-origin: center;
+  animation: floatIcons 6s ease-in-out infinite alternate;
+}
+
+.icon-one {
+  top: 6%;
+  left: 4%;
+  transform: scale(1.05);
+}
+.icon-two {
+  top: 8%;
+  right: 6%;
+  transform: scale(1.12);
+  opacity: 0.45;
+}
+.icon-three {
+  bottom: 10%;
+  left: 34%;
+  transform: scale(1.0);
+  opacity: 0.45;
+}
+
+@keyframes floatIcons {
+  from {
+    transform: translateY(0) rotate(0deg);
+  }
+  to {
+    transform: translateY(-30px) rotate(6deg);
+  }
+}
+
+/* Title and subtitle */
+.adopt-title {
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: var(--pet-yellow);
+  text-align: center;
+  margin-bottom: 8px;
+  z-index: 3;
+  position: relative;
+}
+
+.adopt-subtitle {
+  max-width: 940px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  text-align: center;
+  font-weight: 500;
+  color: #032022;
+  z-index: 3;
+  position: relative;
+  opacity: 1;
+}
+
+/* Grid: 4 columns, gap, responsive */
+.adopt-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 26px;
+  margin-top: 30px;
+  z-index: 3;
+  position: relative;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .adopt-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 900px) {
+  .adopt-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 560px) {
+  .adopt-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card base */
+.adopt-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--pet-cream);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 14px 30px rgba(3, 20, 20, 0.12);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  min-height: 380px;    /* bigger height */
+  width: 100%;
+}
+
+/* Animate.css hover animation added */
+.adopt-card.animate__animated:hover {
+  animation: pulse 0.8s;
+}
+
+/* Variation: when .text-above */
+.adopt-card.text-above {
+  flex-direction: column;
+}
+
+/* image — bigger */
+.adopt-img {
+  width: 100%;
+  height: 260px;  /* increased from 220px */
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+/* pop out on hover */
+.adopt-card:hover .adopt-img {
+  transform: scale(1.04);
+}
+
+/* content area */
+.adopt-content {
+  padding: 18px;
+  color: #071616;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.adopt-content p {
+  margin: 0 0 10px 0;
+}
+
+/* actions row */
+.adopt-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* Read more link */
+.read-more {
+  color: #6a6a6a;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.22s ease, transform 0.22s ease;
+  font-size: 0.88rem;
+}
+.read-more:hover {
+  color: var(--pet-blue);
+  transform: translateY(-1px);
+}
+
+/* Apply button (shatter removed, replaced with simple clean style) */
+.apply-btn {
+  background: var(--pet-pink);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.apply-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 120, 200, 0.35);
+}
+
+/* Card hover lift */
+.adopt-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(3, 20, 20, 0.14);
+}
+
+/* text bold layout */
+.adopt-content strong {
+  font-weight: 800;
+  display: inline-block;
+  width: 110px;
+  vertical-align: top;
+}
+
+/* responsive image sizes */
+@media (max-width: 900px) {
+  .adopt-img {
+    height: 230px;
+  }
+}
+@media (max-width: 560px) {
+  .adopt-img {
+    height: 200px;
+  }
+  .adopt-grid {
+    gap: 16px;
+  }
+}
+
+
+/* forth section */
+
+
+/* FAQ Section Styling */
+.faq-section {
+  background-color: var(--pet-cream);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Title */
+.faq-title {
+  color: var(--pet-pink);
+  font-weight: 700;
+}
+
+/* Description text */
+.faq-description {
+  max-width: 700px;
+  color: #444;
+}
+
+/* Decorative icons */
+.faq-bg-icon {
+  position: absolute;
+  opacity: 0.3;
+  width: 120px;
+}
+
+.icon-1 { top: 5%; left: 3%; }
+.icon-2 { top: 40%; right: 5%; }
+.icon-3 { bottom: 8%; left: 10%; }
+
+/* Rabbit image */
+.faq-rabbit {
+  position: absolute;
+  top: 115px;          
+  right: 332px;        
+  width: 160px;       
+  z-index: 10;
+}
+
+/* Accordion Custom Styling */
+.accordion-item {
+  border: 1px solid #e4e4e4;
+  border-radius: 0;
+  margin-bottom: 10px;
+}
+
+.accordion-button {
+  background-color: white;
+  color: #000;
+  font-weight: 600;
+  position: relative;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  box-shadow: none;
+}
+
+/* Arrow icons styling */
+.arrow-icon {
+  color: var(--pet-yellow);
+  transition: transform 0.3s ease;
+}
+
+.accordion-button:not(.collapsed) .arrow-icon {
+  transform: rotate(90deg);
+}
+
+/* Accessibility focus styling */
+.accordion-button:focus {
+  box-shadow: 0 0 0 0.25rem rgba(248, 169, 226, 0.5); /* pink focus outline */
+}

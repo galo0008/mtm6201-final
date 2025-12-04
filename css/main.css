@@ -620,7 +620,22 @@ body {
   left: 10%;
 }
 
+
+
+
+/* Note  /this is not working*/
 /* Rabbit image */
+/* .faq-rabbit {
+  position: absolute;
+  top: 115px;          
+  right: 332px;        
+  width: 160px;       
+  z-index: 10;
+} */
+
+
+
+
 .faq-rabbit {
   position: absolute;
   top: 100px;
